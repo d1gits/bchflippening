@@ -78,7 +78,7 @@ class App extends Component {
         </div>
         <div className="btc" style={ {height: 100 - flippening_pct + "%"}}>
         </div>
-
+        <div className="footer">The bitcoin legacy f.t. cash flippening is served to you by <a href="https://www.reddit.com/user/Kas_per/" rel="noopener noreferrer" target="_blank">kas_per</a>. <br/><br/> Reach me on Reddit by sending a PM!</div>
       </div>
     );
   }

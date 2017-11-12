@@ -99,3 +99,14 @@ right:0;
     margin-left: -390px;
     margin-top: -200px;
 }
+.footer {
+  position:absolute;
+  bottom: 15px;
+  text-align:center;
+  width: 480px;
+  font-size: 10px;
+  left: 50%;
+  margin-left: -240px;
+  color:white;
+  z-index: 200;
+}
