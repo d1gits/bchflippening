@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="87px" height="661px" viewBox="0 0 87 661" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3" transform="translate(1.000000, 0.000000)">
+            <g id="Group" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square">
+                <path d="M0.234567901,1 L37.7654321,1" id="Line"></path>
+                <path d="M0.234567901,166 L37.7654321,166" id="Line"></path>
+                <path d="M0.234567901,495 L37.7654321,495" id="Line"></path>
+                <path d="M0.234567901,660 L37.7654321,660" id="Line"></path>
+                <path d="M0.234567901,331 L37.7654321,331" id="Line"></path>
+            </g>
+            <g id="Group-2" transform="translate(0.000000, 42.000000)" stroke="#FFFFFF" stroke-linecap="square">
+                <path d="M0.178571429,0.5 L9.82142857,0.5" id="Line"></path>
+                <path d="M0.178571429,41.5 L9.82142857,41.5" id="Line"></path>
+                <path d="M0.178571429,82.5 L9.82142857,82.5" id="Line"></path>
+                <path d="M0.178571429,165.5 L9.82142857,165.5" id="Line"></path>
+                <path d="M0.178571429,206.5 L9.82142857,206.5" id="Line"></path>
+                <path d="M0.178571429,247.5 L9.82142857,247.5" id="Line"></path>
+                <path d="M0.178571429,329.5 L9.82142857,329.5" id="Line"></path>
+                <path d="M0.178571429,370.5 L9.82142857,370.5" id="Line"></path>
+                <path d="M0.178571429,411.5 L9.82142857,411.5" id="Line"></path>
+                <path d="M0.178571429,494.5 L9.82142857,494.5" id="Line"></path>
+                <path d="M0.178571429,535.5 L9.82142857,535.5" id="Line"></path>
+                <path d="M0.178571429,576.5 L9.82142857,576.5" id="Line"></path>
+            </g>
+            <text id="50%" font-family="Helvetica" font-size="14" font-weight="normal" letter-spacing="1.8666662" fill="#FFFFFF">
+                <tspan x="49" y="338">50%</tspan>
+            </text>
+            <text id="75%" font-family="Helvetica" font-size="14" font-weight="normal" letter-spacing="1.8666662" fill="#FFFFFF">
+                <tspan x="49" y="172">75%</tspan>
+            </text>
+            <text id="100%" font-family="Helvetica" font-size="14" font-weight="normal" letter-spacing="1.8666662" fill="#FFFFFF">
+                <tspan x="45" y="19">100%</tspan>
+            </text>
+            <text id="0%" font-family="Helvetica" font-size="14" font-weight="normal" letter-spacing="1.8666662" fill="#FFFFFF">
+                <tspan x="49" y="658">0%</tspan>
+            </text>
+            <text id="25%" font-family="Helvetica" font-size="14" font-weight="normal" letter-spacing="1.8666662" fill="#FFFFFF">
+                <tspan x="49" y="502">25%</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

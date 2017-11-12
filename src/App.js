@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import cash from './cash.png';
 import legacy from './legacy.png';
+import bar from './bar.svg';
 import './App.css';
 // import confetti from './confetti';
 import axios from 'axios';
@@ -43,12 +44,14 @@ class App extends Component {
     // {btc ? btc.market_cap_usd : null}
     return (
       <div className="App">
+        <div className="bar"><img src={bar} /></div>
+        <div className="title">Bitcoin Legacy f.t. Cash Flippening</div>
         <div className="flippening_pct">{flippening_pct}%</div>
         <div className="stats">
           <table class="table table-striped">
               <thead>
                 <tr>
-                  <th> Coin:</th>
+                  <th> </th>
                   <th><img className="logo" alt="" src={cash} /></th>
                   <th><img className="logo" alt="" src={legacy} /></th>
                 </tr>
@@ -71,6 +74,10 @@ class App extends Component {
                 </tr>
               </tbody>
             </table>
+            <div className="footer">
+              The bitcoin legacy f.t. cash flippening is brought to you by <a href="https://www.reddit.com/user/Kas_per/" rel="noopener noreferrer" target="_blank">kas_per</a>.
+              <br/> Reach me on Reddit by sending a PM!
+            </div>
         </div>
 
         <div className="bch" style={ {height: flippening_pct + "%"}}>
@@ -78,7 +85,7 @@ class App extends Component {
         </div>
         <div className="btc" style={ {height: 100 - flippening_pct + "%"}}>
         </div>
-        <div className="footer">The bitcoin legacy f.t. cash flippening is served to you by <a href="https://www.reddit.com/user/Kas_per/" rel="noopener noreferrer" target="_blank">kas_per</a>. <br/><br/> Reach me on Reddit by sending a PM!</div>
+
       </div>
     );
   }
