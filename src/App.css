@@ -1,15 +1,43 @@
 .App {
   text-align: center;
   color: white;
+  height:100vh;
+}
+.flippening_pct {
+  position:absolute;
+  top:45px;
+  left: 0;
+  right:0;
+  text-align:center;
+  color:white;
+  font-size: 80px;
+  line-height: 100px;
+  height: 100px;
+  z-index: 2;
+  -webkit-animation: flippening 2.5s ease-in-out infinite;
+  -z-animation: flippening 2.5s ease-in-out infinite;
+  -o-animation: flippening 2.5s ease-in-out infinite;
+  animation: flippening 2.5s ease-in-out infinite;
+
 }
 .logo {
-  width: 200px;
+  height: 30px;
+}
+.table {
+  text-align:left;
+  font-size: 16px;
 }
 .btc {
-background-color: #8e5c45;
+background-color: #333;
 position:relative;
+max-height: 70%;
+}
+.table>tbody>tr>td {
+  padding: 15px!important;
+
 }
 .bch {
+  border-bottom: 3px solid #222;
   position:relative;
   background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
   background-size: 1800% 1800%;
@@ -40,18 +68,25 @@ position:relative;
     100%{background-position:0% 82%}
 }
 
+@keyframes flippening {
+    0%   {transform: scale(1);}
+    50%  {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+
 .stats{
     color: black;
     background-color: white;
     padding: 30px;
-    border-radius: 10px;
-    position: absolute;
-    width: 480px;
+    border-radius: 7px;
+    position: fixed;
+    z-index: 1;
+    width: 780px;
     max-width: 100%;
     text-align: center;
-    height: 50px;
+    box-shadow: 0px 3px 20px rgba(0,0,0,0.6);
     left: 50%;
     top: 50%;
-    margin-left: -240px;
-    margin-top: -50px;
+    margin-left: -390px;
+    margin-top: -200px;
 }
