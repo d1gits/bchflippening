@@ -30,7 +30,18 @@ class App extends Component {
     axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin/').then((result)=>{
       self.setState({btc: result.data[0]})
     })
+
+    setTimeout(function(){
+      axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin-cash/').then((result)=>{
+        console.log(result.data[0])
+        self.setState({bch: result.data[0]})
+      })
+      axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin/').then((result)=>{
+        self.setState({btc: result.data[0]})
+      })
+    }, 30000);
   }
+
   render() {
     const {bch, btc}  = this.state;
     if (!bch || !btc) {
@@ -45,10 +56,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="bar"><img src={bar} /></div>
-        <div className="title">Bitcoin Legacy f.t. Cash Flippening</div>
+        <div className="title">Bitcoin Legacy ft. Cash - 'Flippening' </div>
         <div className="flippening_pct">{flippening_pct}%</div>
         <div className="stats">
-          <table class="table table-striped">
+          <table className="table table-striped">
               <thead>
                 <tr>
                   <th> </th>
@@ -71,6 +82,12 @@ class App extends Component {
                   <td>Trading volume:</td>
                   <td>{toUsd(parseInt(bch['24h_volume_usd'],10))}</td>
                   <td>{toUsd(parseInt(btc['24h_volume_usd'],10))}</td>
+                </tr>
+
+                <tr>
+                  <td>Price per coin:</td>
+                  <td>{toUsd(parseInt(bch['price_usd'],10))}</td>
+                  <td>{toUsd(parseInt(btc['price_usd'],10))}</td>
                 </tr>
               </tbody>
             </table>
