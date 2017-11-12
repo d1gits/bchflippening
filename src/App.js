@@ -56,7 +56,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="bar"><img src={bar} /></div>
-        <div className="title">Bitcoin Legacy ft. Cash - 'Flippening' </div>
+        <div className="title">Bitcoin Legacy ft. Cash - "Flippening" </div>
         <div className="flippening_pct">{flippening_pct}%</div>
         <div className="stats">
           <table className="table table-striped">
