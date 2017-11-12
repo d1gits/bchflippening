@@ -30,16 +30,22 @@ class App extends Component {
     axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin/').then((result)=>{
       self.setState({btc: result.data[0]})
     })
+    function updateCrypto() {
+      setTimeout(function(){
+        axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin-cash/').then((result)=>{
+          console.log(result.data[0])
+          self.setState({bch: result.data[0]})
+        })
+        axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin/').then((result)=>{
+          self.setState({btc: result.data[0]})
+        })
+        updateCrypto();
+      }, 30000);
+    }
+    updateCrypto();
 
-    setTimeout(function(){
-      axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin-cash/').then((result)=>{
-        console.log(result.data[0])
-        self.setState({bch: result.data[0]})
-      })
-      axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin/').then((result)=>{
-        self.setState({btc: result.data[0]})
-      })
-    }, 30000);
+
+
   }
 
   render() {
