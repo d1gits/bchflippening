@@ -34,6 +34,7 @@ class App extends Component {
   componentDidMount(){
     let self = this;
 
+
     axios.get('http://thedutchweb.nl:8088/').then((result)=>{
       result.data.data.forEach(function(data){
         if (data['e'] == "mempool_transactions") {
@@ -45,6 +46,12 @@ class App extends Component {
     axios.get('https://api.blockchain.info/stats?cors=true').then((result)=>{
       console.log(result.data)
       self.setState({stats: result.data})
+
+      axios.get('https://api.fork.lol/').then((result)=>{
+        self.setState({stats: {...self.state.stats,
+          bch_hashrate : self.state.stats.hash_rate * result.data.BCH.averages.last.rate3h / result.data.BTC.averages.last.rate3h
+        }});
+      })
     });
     axios.get('https://api.blockchain.info/q/unconfirmedcount?cors=true').then((result)=>{
       console.log(result.data)
@@ -70,6 +77,12 @@ class App extends Component {
         axios.get('https://api.blockchain.info/stats?cors=true').then((result)=>{
           console.log(result.data)
           self.setState({stats: result.data})
+
+          axios.get('https://api.fork.lol/').then((result)=>{
+            self.setState({stats: {...self.state.stats,
+              bch_hashrate : self.state.stats.hash_rate * result.data.BCH.averages.last.rate3h / result.data.BTC.averages.last.rate3h
+            }});
+          })
         });
         axios.get('https://api.blockchain.info/q/unconfirmedcount?cors=true').then((result)=>{
           console.log(result.data)
@@ -146,7 +159,7 @@ class App extends Component {
                 </tr>
                 <tr>
                   <td>Hashrate:</td>
-                  <td>n.a.</td>
+                  <td>{ stats.bch_hashrate ? toPhash(stats.bch_hashrate)+'EH/s' : 'n.a.'}</td>
                   <td>{toPhash(stats.hash_rate)}EH/s</td>
                 </tr>
 
