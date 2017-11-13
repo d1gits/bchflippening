@@ -76,7 +76,7 @@ class App extends Component {
               </thead>
               <tbody>
                 <tr>
-                  <td>Marketshare percentage:</td>
+                  <td>Marketshare pct:</td>
                   <td>{bch_pct} %</td>
                   <td>{btc_pct} %</td>
                 </tr>
@@ -99,8 +99,7 @@ class App extends Component {
               </tbody>
             </table>
             <div className="footer">
-              The bitcoin legacy f.t. cash flippening is brought to you by <a href="https://www.reddit.com/user/Kas_per/" rel="noopener noreferrer" target="_blank">kas_per</a>.
-              <br/> Reach me on Reddit by sending a PM!
+              Made by <a href="https://www.reddit.com/user/Kas_per/" rel="noopener noreferrer" target="_blank">kas_per</a>.
             </div>
         </div>
 
