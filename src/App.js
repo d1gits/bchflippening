@@ -21,8 +21,7 @@ class App extends Component {
   }
   componentDidMount(){
     let self = this;
-    console.log(this.confettiCanvas)
-    // confetti(this.confettiCanvas);
+
     axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin-cash/').then((result)=>{
       console.log(result.data[0])
       self.setState({bch: result.data[0]})
@@ -30,6 +29,7 @@ class App extends Component {
     axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin/').then((result)=>{
       self.setState({btc: result.data[0]})
     })
+
     function updateCrypto() {
       setTimeout(function(){
         axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin-cash/').then((result)=>{
@@ -42,6 +42,7 @@ class App extends Component {
         updateCrypto();
       }, 30000);
     }
+
     updateCrypto();
 
 
