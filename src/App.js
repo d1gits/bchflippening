@@ -46,6 +46,14 @@ class App extends Component {
 
     function updateCrypto() {
       setTimeout(function(){
+        axios.get('https://api.blockchain.info/stats?cors=true').then((result)=>{
+          console.log(result.data)
+          self.setState({stats: result.data})
+        });
+        axios.get('https://api.blockchain.info/q/unconfirmedcount?cors=true').then((result)=>{
+          console.log(result.data)
+          self.setState({unconfirmedcount: result.data})
+        });
         axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin-cash/').then((result)=>{
           console.log(result.data[0])
           self.setState({bch: result.data[0]})
