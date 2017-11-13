@@ -9,7 +9,9 @@ import axios from 'axios';
 const toUsd = function (value) {
   return '$ ' + value.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 }
-
+const toBrokenNumber = function (value) {
+  return '' + value.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+}
 
 class App extends Component {
   constructor(){
@@ -50,7 +52,7 @@ class App extends Component {
   }
 
   render() {
-    const {bch, btc}  = this.state;
+    const {bch, btc, unconfirmedcount}  = this.state;
     if (!bch || !btc) {
       return (<div>Loading..</div>);
     }
@@ -96,6 +98,12 @@ class App extends Component {
                   <td>{toUsd(parseInt(bch['price_usd'],10))}</td>
                   <td>{toUsd(parseInt(btc['price_usd'],10))}</td>
                 </tr>
+                <tr>
+                  <td>Unconfirmed tx's:</td>
+                  <td>0</td>
+                  <td>{toBrokenNumber(parseInt(unconfirmedcount))}</td>
+                </tr>
+
               </tbody>
             </table>
             <div className="footer">
