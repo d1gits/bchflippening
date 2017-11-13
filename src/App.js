@@ -10,6 +10,9 @@ const toUsd = function (value) {
   return '$ ' + value.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 }
 const toBrokenNumber = function (value) {
+  if (value == 0) {
+    return 'n.a.';
+  }
   return '' + value.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 }
 const toPhash = function (value) {
@@ -22,11 +25,21 @@ class App extends Component {
     super()
     this.state = {
       bch: null,
-      btc: null
+      btc: null,
+      bch_unconfirmedcount: 0,
+      btc_unconfirmedcount: 0
     }
   }
   componentDidMount(){
     let self = this;
+
+    axios.get('http://thedutchweb.nl:8088/').then((result)=>{
+      result.data.data.forEach(function(data){
+        if (data['e'] == "mempool_transactions") {
+          self.setState({bch_unconfirmedcount: data['c']})
+        }
+      });
+    });
 
     axios.get('https://api.blockchain.info/stats?cors=true').then((result)=>{
       console.log(result.data)
@@ -34,7 +47,7 @@ class App extends Component {
     });
     axios.get('https://api.blockchain.info/q/unconfirmedcount?cors=true').then((result)=>{
       console.log(result.data)
-      self.setState({unconfirmedcount: result.data})
+      self.setState({btc_unconfirmedcount: result.data})
     });
     axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin-cash/').then((result)=>{
       console.log(result.data[0])
@@ -72,8 +85,8 @@ class App extends Component {
   }
 
   render() {
-    const {bch, btc, unconfirmedcount, stats}  = this.state;
-    if (!bch || !btc || !stats || !unconfirmedcount) {
+    const {bch, btc, stats, bch_unconfirmedcount, btc_unconfirmedcount}  = this.state;
+    if (!bch || !btc || !stats ) {
       return (<div>Loading..</div>);
     }
     const totalcap = parseInt(btc.market_cap_usd,10) + parseInt(bch.market_cap_usd,10);
@@ -120,8 +133,8 @@ class App extends Component {
                 </tr>
                 <tr>
                   <td>Unconfirmed tx's:</td>
-                  <td>n.a.</td>
-                  <td>{toBrokenNumber(unconfirmedcount)}</td>
+                  <td>{toBrokenNumber(parseInt(bch_unconfirmedcount))}</td>
+                  <td>{toBrokenNumber(btc_unconfirmedcount)}</td>
                 </tr>
                 <tr>
                   <td>Hashrate:</td>
