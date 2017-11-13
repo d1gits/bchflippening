@@ -59,6 +59,13 @@ class App extends Component {
 
     function updateCrypto() {
       setTimeout(function(){
+        axios.get('http://thedutchweb.nl:8088/').then((result)=>{
+          result.data.data.forEach(function(data){
+            if (data['e'] == "mempool_transactions") {
+              self.setState({bch_unconfirmedcount: data['c']})
+            }
+          });
+        });
         axios.get('https://api.blockchain.info/stats?cors=true').then((result)=>{
           console.log(result.data)
           self.setState({stats: result.data})
