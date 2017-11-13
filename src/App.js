@@ -12,6 +12,10 @@ const toUsd = function (value) {
 const toBrokenNumber = function (value) {
   return '' + value.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 }
+const toPhash = function (value) {
+  value = value / 1000000000;
+  return '' + value.toFixed(3).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+}
 
 class App extends Component {
   constructor(){
@@ -24,6 +28,14 @@ class App extends Component {
   componentDidMount(){
     let self = this;
 
+    axios.get('https://api.blockchain.info/stats?cors=true').then((result)=>{
+      console.log(result.data)
+      self.setState({stats: result.data})
+    });
+    axios.get('https://api.blockchain.info/q/unconfirmedcount?cors=true').then((result)=>{
+      console.log(result.data)
+      self.setState({unconfirmedcount: result.data})
+    });
     axios.get('https://api.coinmarketcap.com/v1/ticker/bitcoin-cash/').then((result)=>{
       console.log(result.data[0])
       self.setState({bch: result.data[0]})
@@ -52,8 +64,8 @@ class App extends Component {
   }
 
   render() {
-    const {bch, btc, unconfirmedcount}  = this.state;
-    if (!bch || !btc) {
+    const {bch, btc, unconfirmedcount, stats}  = this.state;
+    if (!bch || !btc || !stats || !unconfirmedcount) {
       return (<div>Loading..</div>);
     }
     const totalcap = parseInt(btc.market_cap_usd,10) + parseInt(bch.market_cap_usd,10);
@@ -100,8 +112,13 @@ class App extends Component {
                 </tr>
                 <tr>
                   <td>Unconfirmed tx's:</td>
-                  <td>0</td>
-                  <td>{toBrokenNumber(parseInt(unconfirmedcount))}</td>
+                  <td>n.a.</td>
+                  <td>{toBrokenNumber(unconfirmedcount)}</td>
+                </tr>
+                <tr>
+                  <td>Hashrate:</td>
+                  <td>n.a.</td>
+                  <td>{toPhash(stats.hash_rate)}EH/s</td>
                 </tr>
 
               </tbody>
