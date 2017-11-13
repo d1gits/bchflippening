@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import cash from './cash.png';
 import legacy from './legacy.png';
+import moon from './moon.png';
 import bar from './bar.svg';
 import './App.css';
 // import confetti from './confetti';
@@ -155,7 +156,7 @@ class App extends Component {
               Made by <a href="https://www.reddit.com/user/Kas_per/" rel="noopener noreferrer" target="_blank">kas_per</a>.
             </div>
         </div>
-
+        <div className="moon"><img src={moon} className="to-the-moon"/></div>
         <div className="bch" style={ {height: flippening_pct + "%"}}>
           <canvas className="confetti-canvas" ref={(input) => {this.confettiCanvas = input; }} />
         </div>
