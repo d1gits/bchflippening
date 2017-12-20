@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import cash from './cash.png';
 import legacy from './legacy.png';
 import moon from './moon.png';
+import donate from './donate.png';
 import bar from './bar.svg';
 import './App.css';
 // import confetti from './confetti';
@@ -11,12 +12,15 @@ const toUsd = function (value) {
   return '$ ' + value.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 }
 const toBrokenNumber = function (value) {
-  if (value == 0) {
+  if (value === 0) {
     return 'n.a.';
   }
   return '' + value.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 }
 const toPhash = function (value) {
+  if (value === 0) {
+    return 'n.a.';
+  }
   value = value / 1000000000;
   return '' + value.toFixed(3).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 }
@@ -28,7 +32,10 @@ class App extends Component {
       bch: null,
       btc: null,
       bch_unconfirmedcount: 0,
-      btc_unconfirmedcount: 0
+      btc_unconfirmedcount: 0,
+      stats : {
+        hash_rate: 0
+      }
     }
   }
   componentDidMount(){
@@ -37,7 +44,7 @@ class App extends Component {
 
     axios.get('http://thedutchweb.nl:8088/').then((result)=>{
       result.data.data.forEach(function(data){
-        if (data['e'] == "mempool_transactions") {
+        if (data['e'] === "mempool_transactions") {
           self.setState({bch_unconfirmedcount: data['c']})
         }
       });
@@ -69,7 +76,7 @@ class App extends Component {
       setTimeout(function(){
         axios.get('http://thedutchweb.nl:8088/').then((result)=>{
           result.data.data.forEach(function(data){
-            if (data['e'] == "mempool_transactions") {
+            if (data['e'] === "mempool_transactions") {
               self.setState({bch_unconfirmedcount: data['c']})
             }
           });
@@ -166,6 +173,8 @@ class App extends Component {
               </tbody>
             </table>
             <div className="footer">
+              <p>If you like this site, please donate some bitcoin cash: 14q7rrJkq3nSGHhycnxSxsVzJrjMVF8oYy</p>
+              <p><img className="donate" alt="" src={donate} /></p>
               Made by <a href="https://www.reddit.com/user/Kas_per/" rel="noopener noreferrer" target="_blank">kas_per</a>.
             </div>
         </div>
